@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:0.5.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            if( project.hasProperty('WARNINGS_AS_ERRORS'))
+            {
+                options.compilerArgs << "-Xlint" << "-Werror"
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
