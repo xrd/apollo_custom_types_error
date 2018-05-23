@@ -35,15 +35,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.github.xrd.apollo-android:apollo-runtime:0.5.0'
-    implementation 'com.github.xrd.apollo-android:apollo-android-support:0.5.0'
-    //implementation 'com.apollographql.apollo:apollo-runtime:0.5.0'
-    //implementation "com.apollographql.apollo:apollo-android-support:0.5.0"
+    implementation 'com.apollographql.apollo:apollo-runtime:0.5.0'
+    implementation "com.apollographql.apollo:apollo-android-support:0.5.0"
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
 }
 
 apollo {
-//    customTypeMapping['URL'] = "String"
     customTypeMapping['URL'] = "java.lang.String"
 }
