@@ -1,3 +1,17 @@
+## TL;DR
+
+Running this command produces errors (`warning: [rawtypes] found raw type: CustomTypeValue ... missing type arguments for generic class Class<T>`):
+
+```
+JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
+```
+
+This produces no errors:
+
+```
+JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
+```
+
 ## Summary
 
 This repository shows how custom scalar types are incompatible with warnings as errors for javac.
