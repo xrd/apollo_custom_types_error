@@ -1,3 +1,5 @@
+This repository shows how custom scalar types are incompatible with warnings as errors for javac.
+
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
 
 ```
