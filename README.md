@@ -4,7 +4,7 @@ This repository shows how custom scalar types are incompatible with warnings as 
 
 See the [URL scalar type in the schema here](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/graphql/com/webiphany/schema.json#L39).
 
-Schema was generated using `apollo-codegen` (`npm install apollo-codegen`):
+Schema was generated using `apollo-codegen` (`npm install apollo-codegen`). Server app is in [server](server).
 
 ```
 apollo-codegen download-schema \
