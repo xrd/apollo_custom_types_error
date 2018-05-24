@@ -35,6 +35,28 @@ apollo-codegen download-schema \
   --output ./app/src/main/graphql/com/webiphany/schema.json
 ```
 
+The [code to use the generated custom type](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java) uses it in the adapter as such:
+
+```
+CustomTypeAdapter<String> customTypeAdapter = new CustomTypeAdapter<String>() {
+            @Override
+            public String decode(CustomTypeValue value) {
+                return value.value.toString();
+            }
+
+            @Override
+            public CustomTypeValue<?> encode(String value) {
+                return new CustomTypeValue.GraphQLString(value);
+            }
+        };
+
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl(BASE_URL)
+                .okHttpClient(okHttpClient)
+                .addCustomTypeAdapter(CustomType.URL, customTypeAdapter)
+                .build();
+```
+
 ## Errors
 
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
