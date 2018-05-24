@@ -1,10 +1,12 @@
 ## TL;DR
 
-Running this command produces errors (`warning: [rawtypes] found raw type: CustomTypeValue ... missing type arguments for generic class Class<T>`):
+Running this command produces errors 
 
 ```
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
 ```
+
+(`warning: [rawtypes] found raw type: CustomTypeValue ... missing type arguments for generic class Class<T>`):
 
 This produces no errors:
 
