@@ -40,7 +40,7 @@ apollo-codegen download-schema \
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
 
 ```
-SimpleCustomTypeWithLintsWarningsAsErrors git:(master) ✗  JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
+$  JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
 
 > Configure project :app 
 The CompileOptions.bootClasspath property has been deprecated and is scheduled to be removed in Gradle 5.0. Please use the CompileOptions.bootstrapClasspath property instead.
@@ -82,8 +82,6 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 
 BUILD FAILED in 14s
 20 actionable tasks: 18 executed, 2 up-to-date
-➜  SimpleCustomTypeWithLintsWarningsAsErrors git:(master) ✗ 
-
 
 ```
 
@@ -92,7 +90,7 @@ BUILD FAILED in 14s
 Running without the flag shows no errors:
 
 ```
-➜  SimpleCustomTypeWithLintsWarningsAsErrors git:(master) ✗  JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
+$ JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
 
 > Configure project :app
 The CompileOptions.bootClasspath property has been deprecated and is scheduled to be removed in Gradle 5.0. Please use the CompileOptions.bootstrapClasspath property instead.
