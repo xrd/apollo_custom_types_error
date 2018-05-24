@@ -15,6 +15,7 @@ import com.apollographql.apollo.exception.ApolloException;
 import com.apollographql.apollo.response.CustomTypeAdapter;
 import com.apollographql.apollo.response.CustomTypeValue;
 import com.webiphany.LinksQuery;
+import com.webiphany.type.CustomType;
 // import com.webiphany.type.CustomType;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         ApolloClient apolloClient = ApolloClient.builder()
                 .serverUrl(BASE_URL)
                 .okHttpClient(okHttpClient)
-                .addCustomTypeAdapter(CustomTypeManual.URL, customTypeAdapter)
+                .addCustomTypeAdapter(CustomType.URL, customTypeAdapter)
                 .build();
 
         final LinksQuery links = LinksQuery.builder().build();
