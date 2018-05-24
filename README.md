@@ -6,9 +6,9 @@ Running this command produces errors
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
 ```
 
-(`warning: [rawtypes] found raw type: CustomTypeValue ... missing type arguments for generic class Class<T>`):
+ERROR: (`warning: [rawtypes] found raw type: CustomTypeValue ... missing type arguments for generic class Class<T>`):
 
-This produces no errors:
+This command (without `-PWARNINGS_AS_ERRORS=1` added) produces no errors:
 
 ```
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
@@ -16,11 +16,18 @@ JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
 
 ## Summary
 
-This repository shows how custom scalar types are incompatible with warnings as errors for javac.
+This repository shows how a custom scalar type is incompatible with warnings as errors for javac.
 
-See the [URL scalar type in the schema here](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/graphql/com/webiphany/schema.json#L39).
+The custom type is defined [here](https://github.com/xrd/apollo_custom_types_error/blob/master/server/app.js#L13):
+```
+// The GraphQL schema in string form
+const typeDefs = `
+  type Query { links: [URL] }
+  scalar URL
+`;
+```
 
-Schema was generated using `apollo-codegen` (`npm install apollo-codegen`). Server app is in [server](server).
+Schema was generated using `apollo-codegen` (`npm install apollo-codegen`). Server app is in [server](server) and can be started with `npm run start`. Then, use the following command to pull the schema.json which can be loaded into the Android project.
 
 ```
 apollo-codegen download-schema \
