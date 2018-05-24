@@ -40,13 +40,13 @@ apollo-codegen download-schema \
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
 
 ```
-$  JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
+$ JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build -PWARNINGS_AS_ERRORS=1
 
 > Configure project :app 
 The CompileOptions.bootClasspath property has been deprecated and is scheduled to be removed in Gradle 5.0. Please use the CompileOptions.bootstrapClasspath property instead.
 
 > Task :app:compileDebugJavaWithJavac FAILED
-/Users/cdawson/Projects/SimpleCustomTypeWithLintsWarningsAsErrors/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java:55: warning: [rawtypes] found raw type: CustomTypeValue
+/Users/cdawson/Projects/SimpleCustomTypeWithLintsWarningsAsErrors/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java:56: warning: [rawtypes] found raw type: CustomTypeValue
             public String decode(CustomTypeValue value) {
                                  ^
   missing type arguments for generic class CustomTypeValue<T>
@@ -80,7 +80,7 @@ Run with --stacktrace option to get the stack trace. Run with --info or --debug 
 
 * Get more help at https://help.gradle.org
 
-BUILD FAILED in 14s
+BUILD FAILED in 10s
 20 actionable tasks: 18 executed, 2 up-to-date
 
 ```
