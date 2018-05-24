@@ -35,7 +35,39 @@ apollo-codegen download-schema \
   --output ./app/src/main/graphql/com/webiphany/schema.json
 ```
 
-The [code to use the generated custom type](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java) uses it in the adapter as such:
+The generated custom type looks like this:
+
+```
+@Generated("Apollo GraphQL")
+public enum CustomType implements ScalarType {
+  URL {
+    @Override
+    public String typeName() {
+      return "URL";
+    }
+
+    @Override
+    public Class javaType() {
+      return String.class;
+    }
+  },
+
+  ID {
+    @Override
+    public String typeName() {
+      return "ID";
+    }
+
+    @Override
+    public Class javaType() {
+      return String.class;
+    }
+  }
+}
+
+```
+
+[Using it looks like this](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java)
 
 ```
 CustomTypeAdapter<String> customTypeAdapter = new CustomTypeAdapter<String>() {
