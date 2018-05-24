@@ -14,7 +14,7 @@ This command (without `-PWARNINGS_AS_ERRORS=1` added) produces no errors:
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
 ```
 
-## Summary
+## Reproduction Steps and Summary
 
 This repository shows how a custom scalar type is incompatible with warnings as errors for javac.
 
@@ -89,7 +89,7 @@ CustomTypeAdapter<String> customTypeAdapter = new CustomTypeAdapter<String>() {
                 .build();
 ```
 
-## Errors
+## Full Error Output
 
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
 
