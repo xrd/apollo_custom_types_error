@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         CustomTypeAdapter<String> customTypeAdapter = new CustomTypeAdapter<String>() {
             @Override
+            @SuppressWarnings("rawtypes")
             public String decode(CustomTypeValue value) {
                 return value.value.toString();
             }
 
             @Override
+            @SuppressWarnings("rawtypes")
             public CustomTypeValue<?> encode(String value) {
                 return new CustomTypeValue.GraphQLString(value);
             }

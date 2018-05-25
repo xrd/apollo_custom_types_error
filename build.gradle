@@ -5,10 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.apollographql.apollo:apollo-gradle-plugin:0.5.0'
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:0.5.1-SNAPSHOT'
     }
 }
 
