@@ -14,7 +14,7 @@ This command (without `-PWARNINGS_AS_ERRORS=1` added) produces no errors:
 JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ./gradlew clean build
 ```
 
-## Summary
+## Reproduction Steps and Summary
 
 This repository shows how a custom scalar type is incompatible with warnings as errors for javac.
 
@@ -35,7 +35,61 @@ apollo-codegen download-schema \
   --output ./app/src/main/graphql/com/webiphany/schema.json
 ```
 
-## Errors
+The generated custom type looks like this:
+
+```
+@Generated("Apollo GraphQL")
+public enum CustomType implements ScalarType {
+  URL {
+    @Override
+    public String typeName() {
+      return "URL";
+    }
+
+    @Override
+    public Class javaType() {
+      return String.class;
+    }
+  },
+
+  ID {
+    @Override
+    public String typeName() {
+      return "ID";
+    }
+
+    @Override
+    public Class javaType() {
+      return String.class;
+    }
+  }
+}
+
+```
+
+[Using it looks like this](https://github.com/xrd/apollo_custom_types_error/blob/master/app/src/main/java/com/webiphany/simplecustomtypewithlintswarningsaserrors/MainActivity.java)
+
+```
+CustomTypeAdapter<String> customTypeAdapter = new CustomTypeAdapter<String>() {
+            @Override
+            public String decode(CustomTypeValue value) {
+                return value.value.toString();
+            }
+
+            @Override
+            public CustomTypeValue<?> encode(String value) {
+                return new CustomTypeValue.GraphQLString(value);
+            }
+        };
+
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl(BASE_URL)
+                .okHttpClient(okHttpClient)
+                .addCustomTypeAdapter(CustomType.URL, customTypeAdapter)
+                .build();
+```
+
+## Full Error Output
 
 If javac warnings are treated as errors, you cannot compile if the schema has custom types.
 
