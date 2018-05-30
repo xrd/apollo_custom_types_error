@@ -44,4 +44,5 @@ dependencies {
 
 apollo {
     customTypeMapping['URL'] = "java.lang.String"
+    useRawTypesSuppression = "true"
 }
